@@ -12,7 +12,7 @@ htk:
 		make -j 3 && make install
 
 sptk:
-	cd SPTK-3.9 && \
+	cd SPTK-3.9 && autoreconf -f -i && \
 		CC=gcc-4.7 CXX=g++-4.7 ./configure --prefix=`pwd`/install && \
 		make -j 5 && make install
 
