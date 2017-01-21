@@ -561,13 +561,15 @@ if ($CXCL1) {
    # convert cmp stats to duration ones
    convstats();
 
-   my $pm = new Parallel::ForkManager($nj);
-   $pm->run_on_finish( sub {
-      my ($pid, $exit_code, $ident) = @_;
-      if ($exit_code != 0) {
-          exit $exit_code;
-      }
-   });
+   if ($parallel != 0){
+     my $pm = new Parallel::ForkManager($nj);
+     $pm->run_on_finish( sub {
+        my ($pid, $exit_code, $ident) = @_;
+        if ($exit_code != 0) {
+            exit $exit_code;
+        }
+     });
+   }
 
    # tree-based clustering
    foreach $set (@SET) {
@@ -583,9 +585,13 @@ if ($CXCL1) {
             shell("gzip -c $clusmmf{$set} > $clusmmf{$set}$footer.gz");
          }
       }
-	  $pm->finish;
+      if ($parallel != 0){
+	     $pm->finish;
+      }
    }
-   $pm->wait_all_children;
+   if ($parallel != 0){
+     $pm->wait_all_children;
+   }
 }
 
 # HERest (embedded reestimation (clustered))
