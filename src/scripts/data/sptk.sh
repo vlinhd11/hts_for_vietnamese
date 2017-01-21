@@ -20,7 +20,6 @@ base=`basename $wav .wav`
 raw=/tmp/${index}.raw
 sox $wav $raw || exit 1
 
-echo "MinF0: $file_minf0 MaxF0: $file_maxf0"
 x2x +sf $raw | pitch -H $file_maxf0 -L $file_minf0 -p $fs -s $SAMPKHZ -o 2 > $lf0dir/${base}.lf0 || exit 1
 x2x +sf $raw | frame -l $fl -p $fs  | window -l $fl -L $FFTLEN -w $WINDOWTYPE -n $NORMALIZE | \
     mcep -a $FREQWARP -m $MGCORDER -l $FFTLEN -e 1.0E-08 > $mgcdir/${base}.mgc || exit 1
