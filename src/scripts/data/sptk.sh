@@ -6,16 +6,16 @@
 # Distributed under terms of the MIT license.
 #
 
+root=`dirname $0`
 source Config.cfg
 
 BYTEPERFRAME=`expr 4 \* \( $MGCWINDIM + $LF0WINDIM \)`
 wav=$1
 index=$2
 datadir=$3
-subdir=$4
-lf0dir=$datadir/lf0/$subdir/
-mgcdir=$datadir/mgc/$subdir/
-cmpdir=$datadir/cmp/$subdir/
+lf0dir=$datadir/lf0
+mgcdir=$datadir/mgc
+cmpdir=$datadir/cmp
 base=`basename $wav .wav`
 raw=/tmp/${index}.raw
 sox $wav $raw || exit 1
@@ -33,8 +33,8 @@ if [[ -n "`nan $mgcdir/${base}.mgc`" ]]; then
     echo " Failed to extract mgc features from $base";
 fi
 
-perl ../window.pl $MGCDIM $mgcdir/${base}.mgc win/mgc.win1 win/mgc.win2 win/mgc.win3 > /tmp/${index}.mgc.temp || exit 1
-perl ../window.pl $LF0DIM $lf0dir/${base}.lf0 win/lf0.win1 win/lf0.win2 win/lf0.win3 > /tmp/${index}.lf0.temp || exit 1
+perl $root/../window.pl $MGCDIM $mgcdir/${base}.mgc $root/../win/mgc.win1 $root/../win/mgc.win2 $root/../win/mgc.win3 > /tmp/${index}.mgc.temp || exit 1
+perl $root/../window.pl $LF0DIM $lf0dir/${base}.lf0 $root/../win/lf0.win1 $root/../win/lf0.win2 $root/../win/lf0.win3 > /tmp/${index}.lf0.temp || exit 1
 merge +f -s 0 -l $LF0WINDIM -L ${MGCWINDIM} /tmp/${index}.mgc.temp < /tmp/${index}.lf0.temp > /tmp/${index}.cmp || exit 1
-perl ../addhtkheader.pl $SAMPFREQ $fs $BYTEPERFRAME 9 /tmp/${index}.cmp > $cmpdir/${base}.cmp || exit 1
+perl $root/../addhtkheader.pl $SAMPFREQ $fs $BYTEPERFRAME 9 /tmp/${index}.cmp > $cmpdir/${base}.cmp || exit 1
 rm $raw /tmp/${index}.mgc.temp /tmp/${index}.lf0.temp /tmp/${index}.cmp

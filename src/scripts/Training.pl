@@ -840,35 +840,6 @@ if ($SPKAT) {
 }
 
 
-## HHEd (converting mmfs to the hts_engine file format)
-#if ($CONVM) {
-   #print_time("converting mmfs to the hts_engine file format");
-
-   #$tran = $tknd{'adp'};
-   #$mllr = $tran{'adp'};
-   ##$mix  = "SAT+${tran}_${mllr}${nAdapt}";
-   #$mix  = "SI+${tran}_${mllr}${nAdapt}";
-   ## models and tree1s
-   #foreach $set (@SET) {
-      #$spxf = "$xforms{$set}/${spkr}.${mix}";
-      ##$mmfs = "-H $rbase{$set}{$tran} -H $rtree{$set}{$tran}";
-      #foreach $type ( @{ $ref{$set} } ) {
-         #make_edfile_convert($type,$spxf);
-         #shell("$HHEd_CONVM{'cnv'} -H $reclmmf{$set} $mmfs $cnv{$type} $lst{'ful'}");
-         #shell("mv $trd{$set}/trees.$strb{$type} $trv{$type}");
-         #shell("mv $model{$set}/pdf.$strb{$type} $pdf{$type}");
-      #}
-   #}
-
-   ## window coefficients
-   #foreach $type (@cmp) {
-      #shell("cp $windir/${type}.win* $voice");
-   #}
-
-   ## low-pass filter
-   #make_lpf();
-#}
-
 # HHEd (converting mmfs to the HTS voice format)
 if ( $CONVM && !$usestraight ) {
    print_time("converting mmfs to the HTS voice format");
@@ -877,8 +848,7 @@ if ( $CONVM && !$usestraight ) {
    foreach $set (@SET) {
       foreach $type ( @{ $ref{$set} } ) {
          make_edfile_convert($type);
-         #shell("$HHEd{'trn'} -H $reclmmf{$set} $cnv{$type} $lst{'ful'}");
-         shell("$HHEd{'trn'} -H $spatmmf{$set} $cnv{$type} $lst{'ful'}");
+         shell("$HHEd{'trn'} -H $reclmmf{$set} $cnv{$type} $lst{'ful'}");
          shell("cp $trd{$set}/trees.$strb{$type} $trv{$type}");
          shell("cp $model{$set}/pdf.$strb{$type} $pdf{$type}");
       }

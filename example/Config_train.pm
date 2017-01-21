@@ -45,9 +45,9 @@
 
 
 # Settings ==============================
-$fclf        = 'HTS_TTS_ENG';
+$fclf        = 'VI_VAIS';
 $fclv        = '1.0';
-$spkr        = 'slt';
+$spkr        = 'aihoa';
 $qnum        = '001';
 $ver         = '1';
 $usestraight = '0';
@@ -108,7 +108,7 @@ $ref{'dur'} = \@dur;
          'bap' => '0.0',
          'dur' => '1.0');
 
-%ordr = ('mgc' => '13',     # feature order
+%ordr = ('mgc' => '25',     # feature order
          'lf0' => '1',
          'bap' => '1',
          'dur' => '5');
