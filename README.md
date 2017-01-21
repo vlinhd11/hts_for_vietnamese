@@ -1,7 +1,7 @@
 # Introduction #
 HMM voice training template.
 
-Noted: tested on ubuntu 14.04, gcc version below 5.0, other linux distribution should also works well.
+Noted: tested on ubuntu 14.04, gcc and g++ version __below 5.0__, other linux distribution should also works well.
 
 # Installation #
 * Install dependencies,
