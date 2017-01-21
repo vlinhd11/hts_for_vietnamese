@@ -573,7 +573,9 @@ if ($CXCL1) {
 
    # tree-based clustering
    foreach $set (@SET) {
-	  $pm->start and next; # do the fork
+      if ($parallel != 0){
+	    $pm->start and next; # do the fork
+      }
       shell("cp $fullmmf{$set} $clusmmf{$set}");
 
       $footer = "";
