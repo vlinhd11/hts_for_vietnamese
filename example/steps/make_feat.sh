@@ -92,9 +92,8 @@ do
         fi
 
 	mkdir -p $odir/f0/$subDir
-	mkdir -p $odir/lf0/$subDir $odir/clf0/$subDir
+	mkdir -p $odir/lf0/$subDir
 	mkdir -p $odir/mgc/$subDir
-	mkdir -p $odir/bap/$subDir $odir/cbap/$subDir
 	mkdir -p $odir/cmp/$subDir
 
 	echo "process file "$base
