@@ -13,13 +13,13 @@ stage=0
 mkdir -p exp/data
 
 if [[ $stage -le 0 ]]; then
-    ./steps/make_feat.sh data exp/data
+    ./steps/make_feat.sh data exp/data || exit 1
 fi
 
 if [[ $stage -le 1 ]]; then
-    ./steps/make_lab.sh data/txt exp/data
+    ./steps/make_lab.sh data/txt exp/data || exit 1
 fi
 
 if [[ $stage -le 2 ]]; then
-    perl ../src/scripts/Training.pl $here/Config_train.pm
+    perl ../src/scripts/Training.pl $here/Config_train.pm || exit 1
 fi
