@@ -156,7 +156,7 @@ $co     = 2047;            # order of cepstrum to approximate mel-cepstrum
 # Modeling/Generation Setting ==============
 # modeling
 $nState      = 5;        # number of states
-$nIte        = 5;         # number of iterations for embedded training
+$nIte        = 1;         # number of iterations for embedded training
 $beam        = '1500 100 5000'; # initial, inc, and upper limit of beam width
 $maxdev      = 10;        # max standard dev coef to control HSMM maximum duration
 $mindur      = 5;        # min state duration to be evaluated
@@ -164,7 +164,7 @@ $wf          = 5000;        # mixture weight flooring
 $initdurmean = 3.0;             # initial mean of state duration
 $initdurvari = 10.0;            # initial variance of state duration
 $daem        = 1;          # DAEM algorithm based parameter estimation
-$daem_nIte   = 10;     # number of iterations of DAEM-based embedded training
+$daem_nIte   = 1;     # number of iterations of DAEM-based embedded training
 $daem_alpha  = 1.0;     # schedule of updating temperature parameter for DAEM
 
 # generation

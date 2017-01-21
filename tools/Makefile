@@ -3,7 +3,7 @@
 # truong-d, 2017-01-21 18:30
 #
 
-all: htk sptk
+all: htk sptk engine
 	@echo "Makefile needs your attention"
 
 htk:
@@ -16,6 +16,8 @@ sptk:
 		CC=gcc-4.7 CXX=g++-4.7 ./configure --prefix=`pwd`/install && \
 		make -j 5 && make install
 
+engine:
+	cd hts_engine_API-1.10  && CC=gcc-4.7 CXX=g++-4.7 ./configure --prefix=`pwd`/install && make -j 3 && make install
 .PHONY: htk sptk
 # vim:ft=make
 #

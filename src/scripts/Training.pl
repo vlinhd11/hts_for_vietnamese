@@ -1137,48 +1137,6 @@ sub make_proto {
    close(PROTO);
 }
 
-sub gen_wave_WORLD($) {
-   my($gendir, $gentype) = @_;
-   my($line,@FILE,$num,$period,$file,$base,$T,$endian);
-   my ($mgc, $lf0, $bap);
-
-   foreach $file (split('\n',`ls $gendir/*.mgc`)) {
-      $base = `basename $file .mgc`; chomp($base);
-      print " ${base}{.mgc .lf0 .bap}\n";
-
-      $mgc = "$gendir/$base.mgc";
-      $lf0 = "$gendir/$base.lf0";
-      $bap = "$gendir/$base.bap";
-
-      if ($useMSPF) {
-         map { mspf($base, $gendir, $gentype, $_); } (@cmp);
-         $mgc = "$gendir/$base.p_mgc";
-         $lf0 = "$gendir/$base.p_lf0";
-         $bap = "$gendir/$base.p_bap";
-      }
-
-      get_uv_region($lf0, $bap, "$gendir/$base.uv");
-      shell("$OPRF0 -mimuv $gendir/$base.uv $lf0 > $gendir/$base.r_lf0");
-      shell("$OPRF0 -mimuv $gendir/$base.uv $bap > $gendir/$base.r_bap");
-      #print "$gendir/$base.r_bap\n";
-      $lf0 = "$gendir/$base.r_lf0";
-      $bap = "$gendir/$base.r_bap";
-      #shell("$X2X +fa $lf0");
-      #shell("$X2X +fa $bap");
-      #exit 1;
-
-      $opt = "-sr       $sr "
-           . "-alpha    $fw "
-           . "-mcepdim  $ordr{'mgc'} "
-           . "-mcep     $mgc "
-           . "-lf0      $lf0 "
-           . "-bap      $bap ";
-      print "$synthesis_world -nmsg $opt $gendir/$base.wav\n";
-      #shell("$synthesis_world -nmsg $opt $gendir/$base.wav");
-      #shell("rm $gendir/$base.uv  $gendir/$base.r_lf0 $gendir/$base.r_bap");
-   }
-}
-
 sub get_uv_region($$$) {
    my ($fn_lf0, $fn_bap, $fn_uv) = @_;
 
