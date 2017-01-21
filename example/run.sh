@@ -23,3 +23,14 @@ fi
 if [[ $stage -le 2 ]]; then
     perl ../src/scripts/Training.pl $here/Config_train.pm || exit 1
 fi
+
+if [[ $stage -le 3 ]]; then
+    mkdir -p exp/gen
+    mdl=exp/model/voices/qst001/ver1/aihoa.htsvoice
+    for lab in `ls exp/data_gen/labels/full/*.lab`;
+    do
+        base=`basename $lab .lab`
+        echo "Generating wav for $base --> exp/gen"
+        hts_engine -m $mdl $lab -ow exp/gen/$base.wav
+    done
+fi

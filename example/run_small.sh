@@ -9,7 +9,7 @@
 
 . ./path.sh
 here=`pwd`
-stage=3
+stage=0
 mkdir -p exp/data
 
 if [[ $stage -le 0 ]]; then
