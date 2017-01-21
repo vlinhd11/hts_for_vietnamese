@@ -17,7 +17,7 @@ sptk:
 		make -j 5 && make install
 
 engine:
-	cd hts_engine_API-1.10  && ./configure --prefix=`pwd`/install && make -j 3 && make install
+	cd hts_engine_API-1.10 && autoreconf -f -i  && ./configure --prefix=`pwd`/install && make -j 3 && make install
 .PHONY: htk sptk
 # vim:ft=make
 #
