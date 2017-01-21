@@ -560,9 +560,9 @@ if ($CXCL1) {
 
    # convert cmp stats to duration ones
    convstats();
-
+   my $pm = 0;
    if ($parallel != 0){
-     my $pm = new Parallel::ForkManager($nj);
+     $pm = new Parallel::ForkManager($nj);
      $pm->run_on_finish( sub {
         my ($pid, $exit_code, $ident) = @_;
         if ($exit_code != 0) {
@@ -646,8 +646,9 @@ if ($CXCL2) {
 
    # convert cmp stats to duration ones
    convstats();
+   my $pm = 0;
    if ($parallel != 0){
-     my $pm = new Parallel::ForkManager($nj);
+     $pm = new Parallel::ForkManager($nj);
      $pm->run_on_finish( sub {
         my ($pid, $exit_code, $ident) = @_;
         if ($exit_code != 0) {
