@@ -8,16 +8,16 @@ all: htk sptk engine
 
 htk:
 	cd htk && \
-		CC=gcc-4.7 CXX=g++-4.7 ./configure --prefix=`pwd`/install CFLAGS="-DARCH=linux" --disable-hslab && \
+		./configure --prefix=`pwd`/install CFLAGS="-DARCH=linux" --disable-hslab && \
 		make -j 3 && make install
 
 sptk:
 	cd SPTK-3.9 && autoreconf -f -i && \
-		CC=gcc-4.7 CXX=g++-4.7 ./configure --prefix=`pwd`/install && \
+		./configure --prefix=`pwd`/install && \
 		make -j 5 && make install
 
 engine:
-	cd hts_engine_API-1.10  && CC=gcc-4.7 CXX=g++-4.7 ./configure --prefix=`pwd`/install && make -j 3 && make install
+	cd hts_engine_API-1.10  && ./configure --prefix=`pwd`/install && make -j 3 && make install
 .PHONY: htk sptk
 # vim:ft=make
 #
