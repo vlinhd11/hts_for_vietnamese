@@ -1,7 +1,15 @@
+# Introduction #
+HMM voice training template.
+
+Noted: tested on ubuntu 14.04, other linux distribution should also works well.
+
 # Installation #
-1. Install Perl parallel packages,
+1. Install dependencies,
 
     ```
-PERL_MM_USE_DEFAULT=1 perl -MCPAN -e 'install Parallel::ForkManager'
-PERL_MM_USE_DEFAULT=1 perl -MCPAN -e 'install FILE::BASENAME'
+    apt-get install -y --no-install-recommends g++-multilib g++-4.7 make csh sox python zip automake
+
+    # perl parallel packages
+    PERL_MM_USE_DEFAULT=1 perl -MCPAN -e 'install Parallel::ForkManager'
     ```
+
