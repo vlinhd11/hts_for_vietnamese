@@ -14,6 +14,9 @@ mkdir -p exp/data
 
 if [[ $stage -le 0 ]]; then
     ./steps/make_feat.sh data_small exp/data || exit 1
+
+    # Uncomment the line below to resynthesize audios from extracted speech parameters
+    #../src/scripts/data/sptk_wav.sh exp/data exp/resyn || exit 1
 fi
 
 if [[ $stage -le 1 ]]; then
