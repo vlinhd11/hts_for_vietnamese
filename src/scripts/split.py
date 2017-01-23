@@ -1,4 +1,9 @@
 #!/usr/bin/python
+#
+# Copyright (C) 2017 truongdo <truongdo@vais.vn>
+#
+# Distributed under terms of the MIT license.
+#
 import sys
 import os
 

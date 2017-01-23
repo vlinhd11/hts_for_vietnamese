@@ -1,3 +1,4 @@
+// Copyright (C) 2017 truongdo <truongdo@vais.vn>
 QS   "LL_Silence"	{pau^*}
 QS   "LL_Unvoiced"	{h^*,k^*,kc^*,kh^*,p^*,pc^*,ph^*,s^*,t^*,tc^*,th^*,tr^*}
 QS   "LL_Voiced"	{a^*,aa^*,aw^*,e^*,ea^*,ee^*,i^*,ie^*,iz^*,o^*,oa^*,oo^*,ow^*,uo^*,uw^*,uz^*,u^*,w^*,wa^*,b^*,d^*,dd^*,g^*,l^*,m^*,mz^*,n^*,ng^*,ngz^*,nh^*,nz^*,v^*}

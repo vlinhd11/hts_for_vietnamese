@@ -1,7 +1,7 @@
 #! /bin/bash
 #
 # run.sh
-# Copyright (C) 2016 truong-d <truong-d@truongd-ThinkPad-X1-Carbon-3rd>
+# Copyright (C) 2017 truongdo <truongdo@vais.vn>
 #
 # Distributed under terms of the MIT license.
 #
