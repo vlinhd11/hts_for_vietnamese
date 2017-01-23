@@ -9,6 +9,8 @@ It includes,
 
 Noted that the toolkits have been tested on ubuntu 14.04, gcc and g++ version __below 5.0__, but other linux distribution should also works well.
 
+![Demo](http://imgh.us/output.gif "Demo")
+
 # Installation #
 * Installs dependencies,
 ```
