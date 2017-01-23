@@ -17,7 +17,7 @@ if [[ $stage -le 0 ]]; then
 fi
 
 if [[ $stage -le 1 ]]; then
-    ./steps/make_lab.sh data/txt exp/data || exit 1
+    ./steps/make_lab.sh data/txt_5k exp/data_5k || exit 1
 fi
 
 if [[ $stage -le 2 ]]; then
@@ -31,6 +31,6 @@ if [[ $stage -le 3 ]]; then
     do
         base=`basename $lab .lab`
         echo "Generating wav for $base --> exp/gen"
-        hts_engine -m $mdl $lab -ow exp/gen/$base.wav
+        hts_engine -b 0.4 -m $mdl $lab -ow exp/gen/$base.wav
     done
 fi
