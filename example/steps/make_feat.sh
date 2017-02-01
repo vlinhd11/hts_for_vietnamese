@@ -3,7 +3,7 @@
 # make_feat.sh
 # Copyright (C) 2017 truongdo <truongdo@vais.vn>
 #
-# Distributed under terms of the MIT license.
+# Distributed under terms of the modified-BSD license.
 #
 
 

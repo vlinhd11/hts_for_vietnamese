@@ -2,7 +2,7 @@
 #
 # Copyright (C) 2017 truongdo <truongdo@vais.vn>
 #
-# Distributed under terms of the MIT license.
+# Distributed under terms of the modified-BSD license.
 #
 import sys
 import os
