@@ -24,8 +24,7 @@ full_dir=`realpath $odir/labels/full`
 mono_dir=`realpath $odir/labels/mono`
 list_dir=`realpath $odir/lists`
 text=`realpath $datadir/text`
-cd $textana
-./vita_ana $text $full_dir $mono_dir || exit 1
+vita_ana $textana/models $text $full_dir $mono_dir || exit 1
 
 for file in `ls $full_dir/*.lab`;
 do
