@@ -36,3 +36,15 @@ then, add the following lines to your `.bashrc` or `.zshrc`,
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 ```
+
+# Citation #
+If you publish papers using this framework, please cite the following softwares,
+```
+  @misc{truong_vita,
+    author = {Quoc Truong Do},
+    title = {Vita: A Toolkit for Vietnamese segmentation, chunking, part of speech tagging and morphological analyzer},
+    url = {http://truongdo.com/vita/},
+    year = {2015}
+  }
+```
+and also `hts_engine` and `SPTK`.
