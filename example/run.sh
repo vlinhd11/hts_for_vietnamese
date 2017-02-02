@@ -17,7 +17,8 @@ if [[ $stage -le 0 ]]; then
 fi
 
 if [[ $stage -le 1 ]]; then
-    ./steps/make_lab.sh data/txt_5k exp/data_5k || exit 1
+    ./steps/make_lab.sh data/txt exp/data || exit 1
+    ./steps/make_lab.sh data/txt_gen exp/data_gen || exit 1
 fi
 
 if [[ $stage -le 2 ]]; then
