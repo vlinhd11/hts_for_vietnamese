@@ -3,7 +3,7 @@
 # run_small.sh
 # Copyright (C) 2017 truongdo <truongdo@vais.vn>
 #
-# Distributed under terms of the MIT license.
+# Distributed under terms of the modified-BSD license.
 #
 
 
@@ -30,7 +30,7 @@ fi
 
 if [[ $stage -le 3 ]]; then
     mkdir -p exp/gen
-    mdl=exp/model/voices/qst001/ver1/aihoa.htsvoice
+    mdl=exp/model/voices/qst001/ver1/minhnguyet.htsvoice
     for lab in `ls exp/data_gen/labels/full/*.lab`;
     do
         base=`basename $lab .lab`

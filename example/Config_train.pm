@@ -47,7 +47,7 @@
 # Settings ==============================
 $fclf        = 'VI_VAIS';
 $fclv        = '1.0';
-$spkr        = 'aihoa';
+$spkr        = 'minhnguyet';
 $qnum        = '001';
 $ver         = '1';
 $usestraight = '0';
@@ -187,13 +187,13 @@ $cdgv       = 1;       # context-dependent GV
 
 # Directories & Commands ===============
 # project directories
-$prjdir = '/home/truong-d/workspace/vais/hts_sample/example/exp/model';
-$srcdir = '/home/truong-d/workspace/vais/hts_sample/src/scripts';
-$datdir = '/home/truong-d/workspace/vais/hts_sample/example/exp/data';
+$prjdir = '/home/truong-d/workspace/hts_for_vietnamese/example/exp/model';
+$srcdir = '/home/truong-d/workspace/hts_for_vietnamese/src/scripts';
+$datdir = '/home/truong-d/workspace/hts_for_vietnamese/example/exp/data';
 
 # Parallel training
 $parallel = 1;
-$nj = 4;
+$nj = 1;
 $split = "$srcdir/split.py";
 eval {require Parallel::ForkManager};
 if($@) { $parallel = 0; print "Module Parallel::ForkManager is not installed\n using only single cpu for training\n";}

@@ -5,10 +5,13 @@
 #
 # Distributed under terms of the modified-BSD license.
 #
+# This scripts extract speech parameters from audios
+#
 
 
 . ./path.sh
 if [[ $# -ne 2 ]]; then
+    echo "This script extract speech parameter from audios. Configuration can be found in the Config.cfg file."
     echo "Usages: $0 wav-dir odir"
     exit 1
 fi
@@ -110,4 +113,4 @@ done < $odir/wav.scp
 wait
 
 mkdir -p $odir/scp
-find $odir/cmp -iname "*.cmp" | sort > $odir/scp/train.scp  # We use /data to make it compatible with the tts-training container
+find $odir/cmp -iname "*.cmp" | sort > $odir/scp/train.scp

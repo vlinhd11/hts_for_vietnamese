@@ -9,7 +9,7 @@ For your reference, the synthetic audio results can be found in the `baseline_re
 
 # Data
 Because the data is quite large to put in the same repository, please
-download it [here](https://www.dropbox.com/s/qmga0ga8yqsnje5/hts_sample_data.zip?dl=0) and extract it in this folder.
+download it [here](https://www.dropbox.com/s/3pbc7l92bm6av3a/vais_hts_for_vietnamese_data.zip?dl=0) and extract it in this folder.
 
 # Change configuration
 Change the following variables in __Config_train.pm__ to your local path,
