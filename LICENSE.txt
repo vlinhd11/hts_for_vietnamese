@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------- */
-/*           vita_ana: Vietnamese phonetic analysis toolkit          */
+/*           Vietnamese speech synthesis training framework          */
 /*           developed by Truong Do                                  */
 /*           http://vais.vn                                          */
 /* ----------------------------------------------------------------- */
