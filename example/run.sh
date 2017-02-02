@@ -32,6 +32,6 @@ if [[ $stage -le 3 ]]; then
     do
         base=`basename $lab .lab`
         echo "Generating wav for $base --> exp/gen"
-        hts_engine -b 0.4 -m $mdl $lab -ow exp/gen/$base.wav
+        hts_engine -b 0.3 -m $mdl $lab -ow exp/gen/$base.wav
     done
 fi
