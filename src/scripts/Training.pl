@@ -1337,65 +1337,68 @@ sub make_data_gv {
       chomp($cmp);
       $base = `basename $cmp .cmp`;
       chomp($base);
-      print "Making data, labels, and scp from $base.lab for GV...";
-      shell("rm -f $gvdatdir/tmp.cmp");
-      shell("touch $gvdatdir/tmp.cmp");
-      $i = 0;
+      if (-e "$gvfaldir/$base.lab") {
+          print "Making data, labels, and scp from $base.lab for GV...";
+          shell("rm -f $gvdatdir/tmp.cmp");
+          shell("touch $gvdatdir/tmp.cmp");
+          $i = 0;
 
-      foreach $type (@cmp) {
-         if ( $nosilgv && @slnt > 0 ) {
-            shell("rm -f $gvdatdir/tmp.$type");
-            shell("touch $gvdatdir/tmp.$type");
-            open( F, "$gvfaldir/$base.lab" ) || die "Cannot open $!";
-            while ( $str = <F> ) {
-               chomp($str);
-               @arr = split( / /, $str );
-               $find = 0;
-               for ( $j = 0 ; $j < @slnt ; $j++ ) {
-                  if ( $arr[2] eq "$slnt[$j]" ) { $find = 1; last; }
-               }
-               if ( $find == 0 ) {
-                  $start = int( $arr[0] * ( 1.0e-7 / ( $fs / $sr ) ) );
-                  $end   = int( $arr[1] * ( 1.0e-7 / ( $fs / $sr ) ) );
-                  shell("$BCUT -s $start -e $end -l $ordr{$type} < $datdir/$type/$base.$type >> $gvdatdir/tmp.$type");
-               }
-            }
-            close(F);
-         }
-         else {
-            shell("cp $datdir/$type/$base.$type $gvdatdir/tmp.$type");
-         }
-         if ( $msdi{$type} == 0 ) {
-            shell("cat      $gvdatdir/tmp.$type                              | $VSTAT -d -l $ordr{$type} -o 2 >> $gvdatdir/tmp.cmp");
-         }
-         else {
-            shell("$X2X +fa $gvdatdir/tmp.$type | grep -v '1e+10' | $X2X +af | $VSTAT -d -l $ordr{$type} -o 2 >> $gvdatdir/tmp.cmp");
-         }
-         system("rm -f $gvdatdir/tmp.$type");
-         $i += 4 * $ordr{$type};
+          foreach $type (@cmp) {
+             if ( $nosilgv && @slnt > 0 ) {
+                shell("rm -f $gvdatdir/tmp.$type");
+                shell("touch $gvdatdir/tmp.$type");
+                open( F, "$gvfaldir/$base.lab" ) || die "Cannot open $!";
+                while ( $str = <F> ) {
+                   chomp($str);
+                   @arr = split( / /, $str );
+                   $find = 0;
+                   for ( $j = 0 ; $j < @slnt ; $j++ ) {
+                      if ( $arr[2] eq "$slnt[$j]" ) { $find = 1; last; }
+                   }
+                   if ( $find == 0 ) {
+                      $start = int( $arr[0] * ( 1.0e-7 / ( $fs / $sr ) ) );
+                      $end   = int( $arr[1] * ( 1.0e-7 / ( $fs / $sr ) ) );
+                      shell("$BCUT -s $start -e $end -l $ordr{$type} < $datdir/$type/$base.$type >> $gvdatdir/tmp.$type");
+                   }
+                }
+                close(F);
+
+             }
+             else {
+                shell("cp $datdir/$type/$base.$type $gvdatdir/tmp.$type");
+             }
+             if ( $msdi{$type} == 0 ) {
+                shell("cat      $gvdatdir/tmp.$type                              | $VSTAT -d -l $ordr{$type} -o 2 >> $gvdatdir/tmp.cmp");
+             }
+             else {
+                shell("$X2X +fa $gvdatdir/tmp.$type | grep -v '1e+10' | $X2X +af | $VSTAT -d -l $ordr{$type} -o 2 >> $gvdatdir/tmp.cmp");
+             }
+             system("rm -f $gvdatdir/tmp.$type");
+             $i += 4 * $ordr{$type};
+          }
+          shell("$PERL $srcdir/addhtkheader.pl $sr $fs $i 9 $gvdatdir/tmp.cmp > $gvdatdir/$base.cmp");
+          $i = `$NAN $gvdatdir/$base.cmp`;
+          chomp($i);
+          if ( length($i) > 0 ) {
+             shell("rm -f $gvdatdir/$base.cmp");
+          }
+          else {
+             shell("echo $gvdatdir/$base.cmp >> $scp{'gv'}");
+             if ($cdgv) {
+                open( LAB, "$datdir/labels/full/$base.lab" ) || die "Cannot open $!";
+                $str = <LAB>;
+                close(LAB);
+                chomp($str);
+                while ( index( $str, " " ) >= 0 || index( $str, "\t" ) >= 0 ) { substr( $str, 0, 1 ) = ""; }
+                open( LAB, "> $gvlabdir/$base.lab" ) || die "Cannot open $!";
+                print LAB "$str\n";
+                close(LAB);
+                print LST "$str\n";
+             }
+          }
+          system("rm -f $gvdatdir/tmp.cmp");
+          print "done\n";
       }
-      shell("$PERL $srcdir/addhtkheader.pl $sr $fs $i 9 $gvdatdir/tmp.cmp > $gvdatdir/$base.cmp");
-      $i = `$NAN $gvdatdir/$base.cmp`;
-      chomp($i);
-      if ( length($i) > 0 ) {
-         shell("rm -f $gvdatdir/$base.cmp");
-      }
-      else {
-         shell("echo $gvdatdir/$base.cmp >> $scp{'gv'}");
-         if ($cdgv) {
-            open( LAB, "$datdir/labels/full/$base.lab" ) || die "Cannot open $!";
-            $str = <LAB>;
-            close(LAB);
-            chomp($str);
-            while ( index( $str, " " ) >= 0 || index( $str, "\t" ) >= 0 ) { substr( $str, 0, 1 ) = ""; }
-            open( LAB, "> $gvlabdir/$base.lab" ) || die "Cannot open $!";
-            print LAB "$str\n";
-            close(LAB);
-            print LST "$str\n";
-         }
-      }
-      system("rm -f $gvdatdir/tmp.cmp");
-      print "done\n";
    }
    if ($cdgv) {
       close(LST);
