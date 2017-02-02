@@ -187,9 +187,9 @@ $cdgv       = 1;       # context-dependent GV
 
 # Directories & Commands ===============
 # project directories
-$prjdir = '/home/truong-d/workspace/hts_for_vietnamese/example/exp/model';
-$srcdir = '/home/truong-d/workspace/hts_for_vietnamese/src/scripts';
-$datdir = '/home/truong-d/workspace/hts_for_vietnamese/example/exp/data';
+$prjdir = 'exp/model';
+$srcdir = '..//src/scripts';
+$datdir = 'exp/data';
 
 # Parallel training
 $parallel = 1;
