@@ -6,7 +6,7 @@
 # Distributed under terms of the modified-BSD license.
 #
 
-
+set -xe
 . ./path.sh
 here=`pwd`
 stage=0

@@ -188,12 +188,12 @@ $cdgv       = 1;       # context-dependent GV
 # Directories & Commands ===============
 # project directories
 $prjdir = 'exp/model';
-$srcdir = '..//src/scripts';
+$srcdir = '../src/scripts';
 $datdir = 'exp/data';
 
 # Parallel training
 $parallel = 1;
-$nj = 1;
+$nj = 16;
 $split = "$srcdir/split.py";
 eval {require Parallel::ForkManager};
 if($@) { $parallel = 0; print "Module Parallel::ForkManager is not installed\n using only single cpu for training\n";}

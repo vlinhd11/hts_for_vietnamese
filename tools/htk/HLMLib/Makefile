@@ -24,7 +24,7 @@ SHELL = /bin/sh
 srcdir = .
 top_srcdir = ..
 
-prefix = /home/truong-d/workspace/vais/hts_sample/tools/htk/install
+prefix = /home/hts_for_vietnamese/tools/htk/install
 exec_prefix = ${prefix}
 bindir = ${exec_prefix}/bin
 sbindir = ${exec_prefix}/sbin
@@ -39,8 +39,8 @@ mandir = ${prefix}/share/man
 includedir = ${prefix}/include
 oldincludedir = /usr/include
 
-CC = gcc-4.7
-CFLAGS = -Wall -Wno-switch -DARCH=linux -DSANITY -I. -I../HTKLib/
+CC = gcc
+CFLAGS = -Wall -Wno-switch -g -O2 -DSANITY -I. -I../HTKLib/
 RANLIB = ranlib
 INSTALL = /usr/bin/install -c
 target  = HLMLib.a

@@ -25,7 +25,7 @@ inc     = 	../HTKLib
 srcdir = .
 top_srcdir = ..
 
-prefix = /home/truong-d/workspace/vais/hts_sample/tools/htk/install
+prefix = /home/hts_for_vietnamese/tools/htk/install
 exec_prefix = ${prefix}
 bindir = ${exec_prefix}/bin
 sbindir = ${exec_prefix}/sbin
@@ -42,8 +42,8 @@ oldincludedir = /usr/include
 hlib    = 	../HTKLib
 llib    = 	../HLMLib
 HLIBS   = 	$(hlib)/HTKLib.a $(llib)/HLMLib.a
-CC      = 	gcc-4.7
-CFLAGS  = 	-Wall -Wno-switch -DARCH=linux -I$(hlib) -I$(llib) 
+CC      = 	gcc
+CFLAGS  = 	-Wall -Wno-switch -g -O2 -I$(hlib) -I$(llib) 
 LDFLAGS = 	 $(HLIBS) -lm
 INSTALL = 	/usr/bin/install -c
 PROGS   =	Cluster HLMCopy LAdapt LBuild LFoF \

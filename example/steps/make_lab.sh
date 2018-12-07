@@ -5,7 +5,7 @@
 #
 # Distributed under terms of the modified-BSD license.
 #
-
+set -xe
 
 . ./path.sh
 if [[ $# -ne 2 ]]; then
